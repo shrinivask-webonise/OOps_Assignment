@@ -22,11 +22,11 @@ class phone
     }
     void sendsms()
     {
-        cout<<"sending sms..";
+        cout<<"sending sms...."<<endl;
     }
     void call()
     {
-        cout<<"calling..";
+        cout<<"calling...."<<endl;
     }
     void config()
     {
@@ -54,15 +54,15 @@ class smartphone: public phone
   
   void browseinternet()
   {
-      cout<<"Internet Browsing";
+      cout<<"Internet Browsing...."<<endl;
   }
   void sendemail()
   {
-      cout<<"sending email";
+      cout<<"sending Email....."<<endl;
   }
   void takepicture()
   {
-      cout<<"taking picture";
+      cout<<"Taking picture..."<<endl;
   }
   void features()
   {   config();
@@ -123,11 +123,11 @@ class barphone: public phone
     
     void torchon()
     {
-        cout<<"torchon";
+        cout<<"Turning Torch on..."<<endl;
     }
     void playradio()
     {
-        cout<<"on radio";
+        cout<<"Playing Radio..."<<endl;
     }
     void features()
     {   config();
@@ -140,63 +140,100 @@ class barphone: public phone
 int main()
 {
     int choice;
-    cout<<"select phone- 1.smartphone 2.barphone";
-    std::cin >> choice;
+    cout<<"select phone- 1.smartphone"<<endl<<" 2.barphone"<<endl;
+    std::cin>> choice;
     switch(choice)
     {
-        case 1:cout<<"select smartphone"<<endl<<"1. android 2.ios"<<endl;
+        case 1:cout<<"select smartphone"<<endl<<"1. android"<<endl<<" 2.ios"<<endl;
                cin>>choice;    
                switch(choice)
                {
-                   case 1: cout<<"select brand 1.Samsung 2.xiaomi";
+                   case 1: cout<<"select brand 1.Samsung"<<endl<<" 2.xiaomi"<<endl;
                           std::cin >> choice;
                           switch(choice)
                           {
-                            case 1:cout<<"select model 1.S8 2. s6";  
+                            case 1:cout<<"select model:"<<endl<<" 1) S8"<<endl;  
                             std::cin >> choice;
                             switch(choice)
                             {
                              case 1:android a("samsung","s8","Blue","2","45000","yes","7.1");
-                                  a.android_details();
-                                  cout<<"endl";
-                                  a.browseinternet();
-                                  cout<<"endl";
-                                  a.sendemail();
+                                   a.android_details();
+                                  do{
+                                  cout<<endl<<"what you want to do"<<endl<<"1)Browse Internet"<<endl<<"2)Send Email"<<endl<<"3)Make a Call"<<endl<<"4)Exit"<<endl;     
+                                  cin>>choice;
+                                  switch(choice)
+                                  {
+                                      case 1:a.browseinternet(); break;
+                                      case 2:a.sendemail(); break;
+                                      case 3:a.call(); break;
+
+                                  }}while(choice!=4);
                                   break;
                             } break;
                            
-                            case 2:cout<<"select model 1.Mi6  2.Mi8";
+                            case 2:cout<<"select model 1.Mi6"<<endl;
                             std::cin >> choice;
                             switch(choice)
                             {
                              case 1:android a("xiaomi","Mi6","Red","2","15000","yes","android_one");
                                   a.android_details();
-                                  a.browseinternet();
-                                  cout<<"endl";
-                                  a.sendemail();
-                                  break;
+                                 do{ 
+                                 cout<<endl<<"what you want to do"<<endl<<"1)Browse Internet"<<endl<<"2)Send Email"<<endl<<"3)Make a Call"<<endl<<"4)Exit"<<endl;     
+                                  cin>>choice;
+                                  switch(choice)
+                                  {
+                                      case 1:a.browseinternet(); break;
+                                      case 2:a.sendemail(); break;
+                                      case 3:a.call(); break;
+
+                                  }}while(choice!=4);
                             }
                            
                           }
-                    case 2:cout<<"Ios Device 1. iphone 8   2.iphone x";
+                          break;
+                    case 2:cout<<"Ios Device   1.iphone 8"<<endl;
                            cin>>choice;
                            switch(choice)
                            {
                                case 1:Ios iphone("apple","iphone 8","Rose Gold","2","55000","yes","12");
                                   iphone.ios_details();
+                                  do{
+                                   cout<<endl<<"what you want to do"<<endl<<"1)Browse Internet"<<endl<<"2)Send Email"<<endl<<"3)Make a Call"<<endl<<"4)Exit"<<endl;     
+                                  cin>>choice;
+                                  switch(choice)
+                                  {
+                                      case 1:iphone.browseinternet(); break;
+                                      case 2:iphone.sendemail(); break;
+                                      case 3:iphone.call(); break;
+
+                                  }}while(choice!=4);
+
                                   break;
                            }
-               }    
+               }
+               break;
                
         case 2:barphone barphone1("samsung","Guru","Black","2","1500","yes");       
                barphone1.features();
-               cout<<"endl";
-               barphone1.torchon();
-               cout<<"endl";
-               barphone1.playradio();
-               break;
+               cout<<endl;
+               do{
+               cout<<"What you want to do?"<<endl<<"1)torchon"<<endl<<"2)playradio"<<"3) Make a Call"<<endl<<"4) Exit"<<endl;
+               cin>>choice;
+               switch(choice)
+               {
+                case 1:
+                barphone1.torchon();
+                cout<<endl; break;
+                case 2:
+                barphone1.playradio(); break;
+                case 3:
+                barphone1.call(); break;
+               }}while(choice!=4);    
+           break;
     }          
     
     return 0;
 }
+
+
 
